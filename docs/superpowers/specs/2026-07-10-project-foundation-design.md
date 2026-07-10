@@ -28,7 +28,7 @@ Each increment must leave the project in a valid, testable state and may not rep
 - **Localization:** Simplified Chinese and English from the beginning. Runtime logic references stable localization keys, never rendered text.
 - **Internal viewport:** 480×270, 16:9.
 - **World grid:** 32×32 logical and visual tiles. Actors may use taller visual sprites while retaining one-tile logical occupancy where their data specifies it.
-- **Scaling:** Integer scaling, nearest-neighbor filtering, preserved aspect ratio, and letterboxing where the display cannot provide an integer multiple.
+- **Scaling:** `viewport` stretch mode, integer scaling, nearest-neighbor filtering, preserved aspect ratio, and letterboxing where the display cannot provide an integer multiple.
 - **Turn model:** Strictly discrete energy timeline. Movement, attacks, skills, status ticks, and AI actions declare data-defined energy costs. No world simulation advances while awaiting player input.
 - **Data strategy:** Hybrid typed `.tres` + JSON content packs behind one validated `ContentRegistry`.
 - **Renderer:** GL Compatibility for a consistent baseline across Windows, macOS, Linux, Web, and Android.
@@ -250,9 +250,9 @@ Phase one creates the complete directory skeleton with keep files where Git woul
 
 - application name and 4.3 project feature compatibility;
 - 480×270 viewport and a 960×540 default desktop window;
-- canvas-item stretching, integer scale mode, preserved aspect ratio, and centered letterboxing;
+- viewport stretching, integer scale mode, preserved aspect ratio, and centered letterboxing;
 - nearest-neighbor default canvas texture filtering;
-- pixel snapping for 2D transforms and vertices;
+- transform-level 2D pixel snapping, with vertex snapping left disabled because Godot 4.3 explicitly warns against enabling both together;
 - GL Compatibility on desktop and mobile;
 - lossless texture import expectations for pixel-art source files;
 - shared semantic input actions for eight-direction movement, wait, confirm, cancel, inventory, character, codex, map, message history, quick slots, zoom, and pause.
@@ -289,4 +289,4 @@ The final delivery phase will add reproducible export presets for Windows, macOS
 - **Narrative injection can break generation:** separate selection from placement, validate room constraints, and require explicit fallback templates.
 - **Meta-progression can become grind:** gate truth through meaningful variants and decisions, not raw death count alone.
 - **Bilingual prose can diverge:** maintain a canonical glossary, semantic notes, per-key review state, and automated coverage checks.
-- **Cross-platform pixel output can differ:** use one compatibility renderer, deterministic viewport policy, platform-specific screenshot checks, and no unsupported shader path.
+- **Cross-platform pixel output can differ:** use one compatibility renderer, `viewport` stretch with integer scaling, transform-only pixel snapping, platform-specific screenshot checks, and no unsupported shader path.
