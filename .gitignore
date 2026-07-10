@@ -1,0 +1,29 @@
+# Godot generated state
+.godot/
+.import/
+
+# Local brainstorming companion
+.superpowers/
+
+# Builds and exports
+builds/
+dist/
+exports/
+*.apk
+*.aab
+*.exe
+*.dmg
+*.app
+*.zip
+
+# Local secrets and environment files
+.env
+.env.*
+!.env.example
+
+# Editor and OS metadata
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*~
