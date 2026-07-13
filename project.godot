@@ -16,6 +16,24 @@ config/version="0.1.0"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 boot_splash/show_image=false
 
+[autoload]
+
+Logger="*res://scripts/autoload/logger.gd"
+ContentRegistry="*res://scripts/autoload/content_registry.gd"
+EventBus="*res://scripts/autoload/event_bus.gd"
+SaveSystem="*res://scripts/autoload/save_system.gd"
+Balance="*res://scripts/autoload/balance.gd"
+NarrativeSystem="*res://scripts/autoload/narrative_system.gd"
+LoreSystem="*res://scripts/autoload/lore_system.gd"
+QuestSystem="*res://scripts/autoload/quest_system.gd"
+MetaProgressionSystem="*res://scripts/autoload/meta_progression_system.gd"
+InventorySystem="*res://scripts/autoload/inventory_system.gd"
+CombatSystem="*res://scripts/autoload/combat_system.gd"
+DialogueManager="*res://scripts/autoload/dialogue_manager.gd"
+DungeonGenerator="*res://scripts/autoload/dungeon_generator.gd"
+UIManager="*res://scripts/autoload/ui_manager.gd"
+GameManager="*res://scripts/autoload/game_manager.gd"
+
 [display]
 
 window/size/viewport_width=480
