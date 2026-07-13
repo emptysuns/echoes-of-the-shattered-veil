@@ -1,0 +1,12 @@
+[gd_resource type="Resource" load_steps=2 format=3]
+
+[ext_resource path="res://scripts/core/resources/memory_vision_resource.gd" type="Script" id="1"]
+
+[resource]
+script = ExtResource("1")
+content_id = &"base.vision.act1.name_inside_bell"
+display_name_key = &"vision.name_bell.name"
+frame_text_keys = PackedStringArray("vision.name_bell.frame1", "vision.name_bell.frame2", "vision.name_bell.frame3")
+frame_durations = PackedFloat32Array(2.0, 3.0, 2.5)
+palette_id = &"cold_bell"
+skippable = true

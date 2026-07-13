@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "dialogue_id": "base.dialogue.hub.ilyra",
+  "start_node": "opening",
+  "nodes": {
+    "opening": {"type": "line", "speaker": "base.npc.ilyra", "text_key": "dialogue.ilyra.opening", "next": "choice"},
+    "choice": {"type": "choice", "choices": [
+      {"text_key": "dialogue.ilyra.choice_listen", "next": "trust", "commands": [{"type": "adjust_relationship", "target": "base.relationship.ilyra", "amount": 2}]},
+      {"text_key": "dialogue.ilyra.choice_leave", "next": "end"}
+    ]},
+    "trust": {"type": "line", "speaker": "base.npc.ilyra", "text_key": "dialogue.ilyra.trust", "next": "end"},
+    "end": {"type": "end"}
+  }
+}

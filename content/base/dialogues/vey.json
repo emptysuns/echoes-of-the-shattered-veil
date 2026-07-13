@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "dialogue_id": "base.dialogue.hub.vey",
+  "start_node": "opening",
+  "nodes": {
+    "opening": {"type": "line", "speaker": "base.npc.vey", "text_key": "dialogue.vey.opening", "next": "choice"},
+    "choice": {"type": "choice", "choices": [
+      {"text_key": "dialogue.vey.choice_listen", "next": "trust", "commands": [{"type": "adjust_relationship", "target": "base.relationship.vey", "amount": 2}]},
+      {"text_key": "dialogue.vey.choice_leave", "next": "end"}
+    ]},
+    "trust": {"type": "line", "speaker": "base.npc.vey", "text_key": "dialogue.vey.trust", "next": "end"},
+    "end": {"type": "end"}
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "dialogue_id": "base.dialogue.hub.oryn",
+  "start_node": "opening",
+  "nodes": {
+    "opening": {"type": "line", "speaker": "base.npc.oryn", "text_key": "dialogue.oryn.opening", "next": "choice"},
+    "choice": {"type": "choice", "choices": [
+      {"text_key": "dialogue.oryn.choice_listen", "next": "trust", "commands": [{"type": "adjust_relationship", "target": "base.relationship.oryn", "amount": 2}]},
+      {"text_key": "dialogue.oryn.choice_leave", "next": "end"}
+    ]},
+    "trust": {"type": "line", "speaker": "base.npc.oryn", "text_key": "dialogue.oryn.trust", "next": "end"},
+    "end": {"type": "end"}
+  }
+}

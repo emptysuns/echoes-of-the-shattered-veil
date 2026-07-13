@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "dialogue_id": "base.dialogue.hub.moth",
+  "start_node": "opening",
+  "nodes": {
+    "opening": {"type": "line", "speaker": "base.npc.moth", "text_key": "dialogue.moth.opening", "next": "choice"},
+    "choice": {"type": "choice", "choices": [
+      {"text_key": "dialogue.moth.choice_listen", "next": "trust", "commands": [{"type": "adjust_relationship", "target": "base.relationship.moth", "amount": 2}]},
+      {"text_key": "dialogue.moth.choice_leave", "next": "end"}
+    ]},
+    "trust": {"type": "line", "speaker": "base.npc.moth", "text_key": "dialogue.moth.trust", "next": "end"},
+    "end": {"type": "end"}
+  }
+}

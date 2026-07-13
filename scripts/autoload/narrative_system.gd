@@ -65,6 +65,32 @@ func execute_json_commands(commands: Array) -> bool:
                 return false
     return true
 
+func execute_commands(commands: Array[NarrativeCommandResource]) -> bool:
+    var json_commands: Array = []
+    for command in commands:
+        var type_name: String = String(["set_flag", "adjust_relationship", "reveal_lore", "advance_quest", "queue_vision", "unlock_meta", "grant_item", "emit_message"][command.kind])
+        json_commands.append({"type": type_name, "target": String(command.target_id), "value": command.bool_value, "amount": command.amount})
+    return execute_json_commands(json_commands)
+
+func qualified_endings() -> Array[EndingResource]:
+    var result: Array[EndingResource] = []
+    for ending_id in [&"base.ending.mend", &"base.ending.sever", &"base.ending.crown", &"base.ending.chorus"]:
+        var ending := ContentRegistry.get_definition(ending_id) as EndingResource
+        if ending != null and _ending_qualifies(ending): result.append(ending)
+    result.sort_custom(func(a: EndingResource, b: EndingResource) -> bool: return a.priority > b.priority)
+    return result
+
+func _ending_qualifies(ending: EndingResource) -> bool:
+    if LoreSystem.completion_ratio() < ending.minimum_lore_ratio: return false
+    for flag_id in ending.required_flags:
+        if not bool(flags.get(flag_id, false)): return false
+    for npc_id in ending.required_survivors:
+        var short_name := String(npc_id).get_slice(".", 2)
+        if not bool(flags.get("base.flag.%s_alive" % short_name, false)): return false
+    for autonomy_flag in ending.required_autonomy:
+        if not bool(flags.get(autonomy_flag, false)): return false
+    return evaluate_condition(ending.condition)
+
 func set_flag(flag_id: String, value: Variant) -> void:
     flags[flag_id] = value
     EventBus.story_flag_changed.emit(StringName(flag_id), value)
