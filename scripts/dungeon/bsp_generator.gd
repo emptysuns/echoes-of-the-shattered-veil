@@ -133,7 +133,7 @@ func _place_actors(floor_index: int, start: Vector2i, exit: Vector2i) -> Array[D
         if actors.size() >= desired: break
         var room := rooms[room_index]
         var position := _random_floor_in_room(room, [start, exit])
-        actors.append({"definition_id": pool[(room_index + floor_index) % pool.size()], "actor_id": "enemy-%d-%d" % [floor_index, sequence], "position": [position.x, position.y], "sequence": sequence})
+        actors.append({"definition_id": pool[(room_index + floor_index) % pool.size()], "actor_id": "enemy-%d-%d" % [floor_index, sequence], "position": [position.x, position.y], "sequence": sequence, "elite": rng.randf() < 0.16})
         sequence += 1
     return actors
 

@@ -54,11 +54,15 @@ func configure(source: EntityDefinitionResource, id: StringName, position_value:
     if texture != null:
         sprite.texture = texture
         sprite.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
-    elite = source.elite_chance > 0.0 and not player_controlled and not source.tags.has("boss")
-    if elite:
-        health.maximum += 4
-        health.current += 4
-        combat.base_attack += 1
+    elite = false
+
+func make_elite() -> void:
+    if elite or player_controlled: return
+    elite = true
+    health.maximum += 4
+    health.current += 4
+    combat.base_attack += 1
+    sprite.modulate = Color("d59a42")
 
 func set_grid_position(value: Vector2i) -> void:
     var previous := grid_position

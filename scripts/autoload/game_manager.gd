@@ -25,6 +25,7 @@ func start_new_run(seed_override := 0) -> Dictionary:
     defeated_count = 0
     mode = Mode.RUN
     InventorySystem.reset_for_run()
+    QuestSystem.active.clear()
     CombatSystem.begin_run(run_seed)
     QuestSystem.start_quest(&"base.quest.act1.a_name_returned")
     EventBus.run_started.emit(run_id, run_seed)

@@ -34,7 +34,7 @@ func spend_essence(amount: int, unlock_id: StringName) -> bool:
     return true
 
 func snapshot() -> Dictionary:
-    return {"echo_essence": echo_essence, "death_count": death_count, "memory_tier": memory_tier, "unlocks": unlocks.duplicate(true), "run_archive": run_archive.duplicate(true), "narrative": NarrativeSystem.snapshot(), "lore": LoreSystem.snapshot(), "quests": QuestSystem.snapshot()}
+    return {"echo_essence": echo_essence, "death_count": death_count, "memory_tier": memory_tier, "unlocks": unlocks.duplicate(true), "run_archive": run_archive.duplicate(true), "narrative": NarrativeSystem.snapshot(), "lore": LoreSystem.snapshot()}
 
 func restore(data: Dictionary) -> void:
     if data.is_empty(): return
@@ -45,4 +45,3 @@ func restore(data: Dictionary) -> void:
     run_archive.assign(data.get("run_archive", []))
     NarrativeSystem.restore(data.get("narrative", {}))
     LoreSystem.restore(data.get("lore", {}))
-    QuestSystem.restore(data.get("quests", {}))
