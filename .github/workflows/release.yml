@@ -140,5 +140,5 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           TAG: ${{ needs.gate.outputs.tag }}
         run: |
-          gh release view "$TAG" --json isLatest,assets,url --jq '{latest:.isLatest,url,assets:[.assets[].name]}'
-          test "$(gh release view "$TAG" --json isLatest --jq .isLatest)" = true
+          gh release view "$TAG" --json assets,url --jq '{url,assets:[.assets[].name]}'
+          test "$(gh api "repos/$GITHUB_REPOSITORY/releases/latest" --jq .tag_name)" = "$TAG"
