@@ -1,0 +1,21 @@
+[gd_resource type="Resource" load_steps=2 format=3]
+
+[ext_resource path="res://scripts/core/resources/biome_definition_resource.gd" type="Script" id="1"]
+
+[resource]
+script = ExtResource("1")
+content_id = &"base.biome.ashen_narthex"
+display_name_key = &"act.1.name"
+description_key = &"biome.ashen_narthex.description"
+tags = PackedStringArray("act1", "cathedral", "ash")
+act = 1
+minimum_floor = 1
+maximum_floor = 3
+wall_color = Color(0.0706, 0.0667, 0.149, 1)
+floor_color = Color(0.1529, 0.1373, 0.2902, 1)
+explored_color = Color(0.0902, 0.0824, 0.1686, 1)
+spawn_entity_ids = PackedStringArray("base.enemy.ash_hound", "base.enemy.bell_acolyte", "base.enemy.ash_sentinel")
+item_ids = PackedStringArray("base.item.consumable.echo_tonic", "base.item.weapon.ashglass_sabre")
+story_event_ids = PackedStringArray("base.story.act1.nave_missing_names", "base.story.act1.ash_clinic", "base.story.act1.bellmakers_cell")
+room_min_size = Vector2i(4, 4)
+room_max_size = Vector2i(9, 7)

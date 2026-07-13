@@ -1,0 +1,15 @@
+[gd_resource type="Resource" load_steps=2 format=3]
+
+[ext_resource path="res://scripts/core/resources/status_effect_resource.gd" type="Script" id="1"]
+
+[resource]
+script = ExtResource("1")
+content_id = &"base.status.guarded"
+display_name_key = &"base.status.guarded.name"
+stack_mode = 0
+tick_timing = 1
+max_stacks = 1
+base_duration = 1
+attack_modifier = 0
+defense_modifier = 3
+speed_modifier = 0

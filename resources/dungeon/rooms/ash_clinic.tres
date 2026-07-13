@@ -1,0 +1,15 @@
+[gd_resource type="Resource" load_steps=2 format=3]
+
+[ext_resource path="res://scripts/core/resources/room_template_resource.gd" type="Script" id="1"]
+
+[resource]
+script = ExtResource("1")
+content_id = &"base.room.story.ash_clinic"
+display_name_key = &"base.room.story.ash_clinic.name"
+room_tag = &"story_clinic"
+layout = PackedStringArray("########", "#..L...#", "#......#", "#..I...#", "###++###")
+minimum_floor = 1
+maximum_floor = 3
+minimum_entrances = 1
+secret = false
+interaction_id = &"base.lore.act1.burnt_triage_slate"

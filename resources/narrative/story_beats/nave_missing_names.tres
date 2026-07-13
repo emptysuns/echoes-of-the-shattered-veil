@@ -1,0 +1,15 @@
+[gd_resource type="Resource" load_steps=2 format=3]
+
+[ext_resource path="res://scripts/core/resources/story_event_resource.gd" type="Script" id="1"]
+
+[resource]
+script = ExtResource("1")
+content_id = &"base.story.act1.nave_missing_names"
+display_name_key = &"base.story.act1.nave_missing_names.name"
+act = 1
+required = true
+room_tag = &"story_nave"
+minimum_floor = 1
+maximum_floor = 3
+cooldown_floors = 2
+fallback_room_id = &"base.room.story.ash_clinic"

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" load_steps=2 format=3]
+
+[ext_resource path="res://scripts/core/resources/affix_definition_resource.gd" type="Script" id="1"]
+
+[resource]
+script = ExtResource("1")
+content_id = &"base.affix.resonant"
+display_name_key = &"base.affix.resonant.name"
+tier = 2
+budget_cost = 4
+allowed_item_tags = PackedStringArray("weapon")
+attack_bonus = 2
+defense_bonus = 0
+health_bonus = 0
+granted_effect_ids = PackedStringArray("base.effect.apply_memory_bleed")

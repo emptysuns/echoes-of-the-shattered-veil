@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "act": 1,
+  "canonical_ids": [
+    "base.lore.act1.bellkeepers_inventory",
+    "base.lore.act1.burnt_triage_slate",
+    "base.lore.act1.recall_dates_removed",
+    "base.lore.act1.caedmon_order",
+    "base.lore.act1.lysa_paper_bird",
+    "base.lore.act1.wall_of_missing_names",
+    "base.lore.act1.mercy_calibration_hymn",
+    "base.lore.act1.aster_gate_annotation"
+  ]
+}

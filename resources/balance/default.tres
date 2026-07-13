@@ -1,0 +1,15 @@
+[gd_resource type="Resource" load_steps=2 format=3]
+
+[ext_resource path="res://scripts/core/resources/balance_config_resource.gd" type="Script" id="1"]
+
+[resource]
+script = ExtResource("1")
+content_id = &"base.balance.default"
+display_name_key = &"balance.default.name"
+readiness_threshold = 1000
+move_energy_cost = 1000
+melee_energy_cost = 1000
+ranged_energy_cost = 1200
+defense_reduction_per_point = 0.08
+critical_multiplier = 1.5
+base_essence_per_floor = 8

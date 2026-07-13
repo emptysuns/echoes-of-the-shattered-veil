@@ -1,0 +1,16 @@
+[gd_resource type="Resource" load_steps=2 format=3]
+
+[ext_resource path="res://scripts/core/resources/npc_definition_resource.gd" type="Script" id="1"]
+
+[resource]
+script = ExtResource("1")
+content_id = &"base.npc.vey"
+display_name_key = &"npc.vey.name"
+description_key = &"npc.vey.description"
+portrait_path = "res://assets/portraits/vey.png"
+dialogue_ids = PackedStringArray("base.dialogue.hub.vey")
+relationship_track_id = &"base.relationship.vey"
+initial_relationship = 0
+survival_flag_id = &"base.flag.vey_alive"
+autonomy_flag_id = &"base.flag.vey_autonomy"
+gameplay_service = &"affix_forge"

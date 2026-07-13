@@ -1,0 +1,15 @@
+[gd_resource type="Resource" load_steps=2 format=3]
+
+[ext_resource path="res://scripts/core/resources/ending_resource.gd" type="Script" id="1"]
+
+[resource]
+script = ExtResource("1")
+content_id = &"base.ending.sever"
+display_name_key = &"ending.sever.name"
+description_key = &"ending.sever.description"
+priority = 20
+minimum_lore_ratio = 0.45
+required_flags = PackedStringArray("base.flag.severance_route")
+required_survivors = PackedStringArray()
+required_autonomy = PackedStringArray()
+finale_scene_id = &"base.finale.sever"

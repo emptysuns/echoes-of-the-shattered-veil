@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "dialogue_id": "base.dialogue.hub.maelin",
+  "start_node": "opening",
+  "nodes": {
+    "opening": {"type": "line", "speaker": "base.npc.maelin", "text_key": "dialogue.maelin.opening", "next": "choice"},
+    "choice": {"type": "choice", "choices": [
+      {"text_key": "dialogue.maelin.choice_crack", "next": "crack", "commands": [{"type": "set_flag", "target": "base.flag.maelin_noticed_crack", "value": true}]},
+      {"text_key": "dialogue.maelin.choice_died", "next": "death", "conditions": [{"type": "meta_at_least", "target": "deaths", "value": 1}], "commands": [{"type": "adjust_relationship", "target": "base.relationship.maelin", "amount": 3}]},
+      {"text_key": "dialogue.maelin.choice_leave", "next": "end"}
+    ]},
+    "crack": {"type": "line", "speaker": "base.npc.maelin", "text_key": "dialogue.maelin.crack_reply", "next": "end"},
+    "death": {"type": "line", "speaker": "base.npc.maelin", "text_key": "dialogue.maelin.death_reply", "next": "end"},
+    "end": {"type": "end"}
+  }
+}

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" load_steps=2 format=3]
+
+[ext_resource path="res://scripts/core/resources/room_template_resource.gd" type="Script" id="1"]
+
+[resource]
+script = ExtResource("1")
+content_id = &"base.room.story.nave_missing_names"
+display_name_key = &"base.room.story.nave_missing_names.name"
+room_tag = &"story_nave"
+layout = PackedStringArray("#########", "#..L....#", "#.......#", "#...I...#", "#.......#", "####+####")
+minimum_floor = 1
+maximum_floor = 3
+minimum_entrances = 1
+secret = false
+interaction_id = &"base.lore.act1.wall_of_missing_names"

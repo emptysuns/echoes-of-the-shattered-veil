@@ -1,0 +1,54 @@
+[gd_resource type="Resource" load_steps=9 format=3]
+
+[ext_resource path="res://scripts/core/resources/quest_resource.gd" type="Script" id="1"]
+[ext_resource path="res://scripts/core/resources/quest_step_resource.gd" type="Script" id="2"]
+
+[sub_resource type="Resource" id="StepStart"]
+script = ExtResource("2")
+step_id = &"unstarted"
+text_key = &"quest.a_name_returned.unstarted"
+next_step_ids = PackedStringArray("found_order", "found_bird")
+
+[sub_resource type="Resource" id="StepOrder"]
+script = ExtResource("2")
+step_id = &"found_order"
+text_key = &"quest.a_name_returned.found_order"
+next_step_ids = PackedStringArray("found_bird", "confronted_caedmon")
+
+[sub_resource type="Resource" id="StepBird"]
+script = ExtResource("2")
+step_id = &"found_bird"
+text_key = &"quest.a_name_returned.found_bird"
+next_step_ids = PackedStringArray("found_order", "confronted_caedmon")
+
+[sub_resource type="Resource" id="StepConfronted"]
+script = ExtResource("2")
+step_id = &"confronted_caedmon"
+text_key = &"quest.a_name_returned.confronted"
+next_step_ids = PackedStringArray("extracted", "suspended", "restored")
+
+[sub_resource type="Resource" id="StepExtracted"]
+script = ExtResource("2")
+step_id = &"extracted"
+text_key = &"quest.a_name_returned.extracted"
+terminal = true
+
+[sub_resource type="Resource" id="StepSuspended"]
+script = ExtResource("2")
+step_id = &"suspended"
+text_key = &"quest.a_name_returned.suspended"
+terminal = true
+
+[sub_resource type="Resource" id="StepRestored"]
+script = ExtResource("2")
+step_id = &"restored"
+text_key = &"quest.a_name_returned.restored"
+terminal = true
+
+[resource]
+script = ExtResource("1")
+content_id = &"base.quest.act1.a_name_returned"
+display_name_key = &"quest.a_name_returned.name"
+description_key = &"quest.a_name_returned.description"
+start_step_id = &"unstarted"
+steps = Array[ExtResource("2")]([SubResource("StepStart"), SubResource("StepOrder"), SubResource("StepBird"), SubResource("StepConfronted"), SubResource("StepExtracted"), SubResource("StepSuspended"), SubResource("StepRestored")])

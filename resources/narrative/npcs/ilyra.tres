@@ -1,0 +1,16 @@
+[gd_resource type="Resource" load_steps=2 format=3]
+
+[ext_resource path="res://scripts/core/resources/npc_definition_resource.gd" type="Script" id="1"]
+
+[resource]
+script = ExtResource("1")
+content_id = &"base.npc.ilyra"
+display_name_key = &"npc.ilyra.name"
+description_key = &"npc.ilyra.description"
+portrait_path = "res://assets/portraits/ilyra.png"
+dialogue_ids = PackedStringArray("base.dialogue.hub.ilyra")
+relationship_track_id = &"base.relationship.ilyra"
+initial_relationship = 0
+survival_flag_id = &"base.flag.ilyra_alive"
+autonomy_flag_id = &"base.flag.ilyra_autonomy"
+gameplay_service = &"map_memory"

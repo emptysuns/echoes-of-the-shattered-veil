@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=2 format=3]
+
+[ext_resource path="res://scripts/core/resources/lore_entry_resource.gd" type="Script" id="1"]
+
+[resource]
+script = ExtResource("1")
+content_id = &"base.lore.act1.caedmon_order"
+display_name_key = &"lore.caedmon_order.title"
+body_key = &"lore.caedmon_order.body"
+source_actor_id = &"base.faction.royal_court"
+source_role = &"official"
+reveal_tier = 1
+act = 1
+canonical = true

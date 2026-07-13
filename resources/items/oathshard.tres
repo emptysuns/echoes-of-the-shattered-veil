@@ -1,0 +1,17 @@
+[gd_resource type="Resource" load_steps=2 format=3]
+
+[ext_resource path="res://scripts/core/resources/item_definition_resource.gd" type="Script" id="1"]
+
+[resource]
+script = ExtResource("1")
+content_id = &"base.item.relic.oathshard"
+display_name_key = &"base.item.relic.oathshard.name"
+description_key = &"base.item.relic.oathshard.description"
+item_type = 1
+equip_slot = 3
+max_stack = 1
+power = 7
+affix_slots = 1
+effect_ids = PackedStringArray("base.effect.apply_memory_bleed")
+texture_path = "res://assets/sprites/items/echo_shard.png"
+essence_value = 18

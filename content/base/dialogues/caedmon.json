@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "dialogue_id": "base.dialogue.boss.caedmon",
+  "start_node": "opening",
+  "nodes": {
+    "opening": {"type": "line", "speaker": "base.boss.caedmon_rook", "text_key": "dialogue.caedmon.opening", "next": "recognition"},
+    "recognition": {"type": "line", "speaker": "base.boss.caedmon_rook", "text_key": "dialogue.caedmon.recognition", "next": "choice"},
+    "choice": {"type": "choice", "choices": [
+      {"text_key": "dialogue.caedmon.say_lysa", "next": "restore", "conditions": [{"type": "flag_equals", "target": "base.flag.lysa_bird_found", "value": true}]},
+      {"text_key": "dialogue.caedmon.extract", "next": "end", "commands": [{"type": "set_flag", "target": "base.flag.caedmon_extracted", "value": true}]},
+      {"text_key": "dialogue.caedmon.suspend", "next": "end", "commands": [{"type": "set_flag", "target": "base.flag.caedmon_protocol_suspended", "value": true}]}
+    ]},
+    "restore": {"type": "line", "speaker": "base.boss.caedmon_rook", "text_key": "dialogue.caedmon.restore", "next": "end", "commands": [{"type": "set_flag", "target": "base.flag.caedmon_chose_after_restoration", "value": true}]},
+    "end": {"type": "end"}
+  }
+}

@@ -1,0 +1,18 @@
+[gd_resource type="Resource" load_steps=3 format=3]
+
+[ext_resource path="res://scripts/core/resources/entity_definition_resource.gd" type="Script" id="1"]
+[ext_resource path="res://resources/entities/stats/caedmon.tres" type="Resource" id="2"]
+
+[resource]
+script = ExtResource("1")
+content_id = &"base.boss.caedmon_rook"
+display_name_key = &"base.boss.caedmon_rook.name"
+description_key = &"base.boss.caedmon_rook.description"
+tags = PackedStringArray("entity", "act1", "hostile")
+stats = ExtResource("2")
+ai_profile = &"boss_caedmon"
+faction = &"hostile"
+texture_path = "res://assets/sprites/actors/caedmon.png"
+component_ids = PackedStringArray("health", "combat", "energy", "status", "ai", "dialogue", "narrative_trigger")
+action_ids = PackedStringArray("shield_bash", "bell_wave", "summon_oath")
+elite_chance = 0.0

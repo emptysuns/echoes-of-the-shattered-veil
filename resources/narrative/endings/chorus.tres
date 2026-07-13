@@ -1,0 +1,15 @@
+[gd_resource type="Resource" load_steps=2 format=3]
+
+[ext_resource path="res://scripts/core/resources/ending_resource.gd" type="Script" id="1"]
+
+[resource]
+script = ExtResource("1")
+content_id = &"base.ending.chorus"
+display_name_key = &"ending.chorus.name"
+description_key = &"ending.chorus.description"
+priority = 100
+minimum_lore_ratio = 0.85
+required_flags = PackedStringArray("base.flag.caedmon_chose_after_restoration", "base.flag.ilyra_memory_not_forged", "base.flag.aster_echo_not_overwritten")
+required_survivors = PackedStringArray("base.npc.maelin", "base.npc.ilyra", "base.npc.vey", "base.npc.oryn", "base.npc.moth")
+required_autonomy = PackedStringArray("base.flag.maelin_autonomy", "base.flag.ilyra_autonomy", "base.flag.vey_autonomy", "base.flag.oryn_autonomy", "base.flag.moth_autonomy")
+finale_scene_id = &"base.finale.chorus"

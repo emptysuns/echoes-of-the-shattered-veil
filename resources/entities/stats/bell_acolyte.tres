@@ -1,0 +1,15 @@
+[gd_resource type="Resource" load_steps=2 format=3]
+
+[ext_resource path="res://scripts/core/resources/stat_block_resource.gd" type="Script" id="1"]
+
+[resource]
+script = ExtResource("1")
+content_id = &"base.stats.bell_acolyte"
+display_name_key = &"base.stats.bell_acolyte.name"
+max_health = 8
+attack = 3
+defense = 1
+speed = 90
+vision_range = 8
+attack_range = 5
+critical_chance = 5

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=2 format=3]
+
+[ext_resource path="res://scripts/core/resources/lore_entry_resource.gd" type="Script" id="1"]
+
+[resource]
+script = ExtResource("1")
+content_id = &"base.lore.act1.aster_gate_annotation"
+display_name_key = &"lore.aster_gate_annotation.title"
+body_key = &"lore.aster_gate_annotation.body"
+source_actor_id = &"base.npc.aster_vale"
+source_role = &"participant"
+reveal_tier = 2
+act = 1
+canonical = true

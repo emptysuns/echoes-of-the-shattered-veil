@@ -1,0 +1,17 @@
+[gd_resource type="Resource" load_steps=2 format=3]
+
+[ext_resource path="res://scripts/core/resources/item_definition_resource.gd" type="Script" id="1"]
+
+[resource]
+script = ExtResource("1")
+content_id = &"base.item.weapon.ashglass_sabre"
+display_name_key = &"base.item.weapon.ashglass_sabre.name"
+description_key = &"base.item.weapon.ashglass_sabre.description"
+item_type = 1
+equip_slot = 1
+max_stack = 1
+power = 4
+affix_slots = 2
+effect_ids = PackedStringArray()
+texture_path = "res://assets/sprites/items/echo_shard.png"
+essence_value = 8

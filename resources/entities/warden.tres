@@ -1,0 +1,18 @@
+[gd_resource type="Resource" load_steps=3 format=3]
+
+[ext_resource path="res://scripts/core/resources/entity_definition_resource.gd" type="Script" id="1"]
+[ext_resource path="res://resources/entities/stats/warden.tres" type="Resource" id="2"]
+
+[resource]
+script = ExtResource("1")
+content_id = &"base.entity.player.warden"
+display_name_key = &"base.entity.player.warden.name"
+description_key = &"base.entity.player.warden.description"
+tags = PackedStringArray("entity", "act1", "player")
+stats = ExtResource("2")
+ai_profile = &"none"
+faction = &"player"
+texture_path = "res://assets/sprites/actors/warden.png"
+component_ids = PackedStringArray("health", "combat", "energy", "status", "inventory", "narrative_trigger")
+action_ids = PackedStringArray("melee")
+elite_chance = 0.0

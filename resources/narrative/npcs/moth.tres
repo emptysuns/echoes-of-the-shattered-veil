@@ -1,0 +1,16 @@
+[gd_resource type="Resource" load_steps=2 format=3]
+
+[ext_resource path="res://scripts/core/resources/npc_definition_resource.gd" type="Script" id="1"]
+
+[resource]
+script = ExtResource("1")
+content_id = &"base.npc.moth"
+display_name_key = &"npc.moth.name"
+description_key = &"npc.moth.description"
+portrait_path = "res://assets/portraits/moth.png"
+dialogue_ids = PackedStringArray("base.dialogue.hub.moth")
+relationship_track_id = &"base.relationship.moth"
+initial_relationship = 0
+survival_flag_id = &"base.flag.moth_alive"
+autonomy_flag_id = &"base.flag.moth_autonomy"
+gameplay_service = &"resonance_hints"

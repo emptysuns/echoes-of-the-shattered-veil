@@ -1,0 +1,16 @@
+[gd_resource type="Resource" load_steps=2 format=3]
+
+[ext_resource path="res://scripts/core/resources/npc_definition_resource.gd" type="Script" id="1"]
+
+[resource]
+script = ExtResource("1")
+content_id = &"base.npc.maelin"
+display_name_key = &"npc.maelin.name"
+description_key = &"npc.maelin.description"
+portrait_path = "res://assets/portraits/maelin.png"
+dialogue_ids = PackedStringArray("base.dialogue.hub.maelin")
+relationship_track_id = &"base.relationship.maelin"
+initial_relationship = 0
+survival_flag_id = &"base.flag.maelin_alive"
+autonomy_flag_id = &"base.flag.maelin_autonomy"
+gameplay_service = &"respawn_history"

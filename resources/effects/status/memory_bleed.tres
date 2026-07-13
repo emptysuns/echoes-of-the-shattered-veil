@@ -1,0 +1,16 @@
+[gd_resource type="Resource" load_steps=2 format=3]
+
+[ext_resource path="res://scripts/core/resources/status_effect_resource.gd" type="Script" id="1"]
+
+[resource]
+script = ExtResource("1")
+content_id = &"base.status.memory_bleed"
+display_name_key = &"base.status.memory_bleed.name"
+stack_mode = 2
+tick_timing = 1
+max_stacks = 3
+base_duration = 3
+attack_modifier = -1
+defense_modifier = 0
+speed_modifier = -5
+periodic_effect_id = &"base.effect.slash"

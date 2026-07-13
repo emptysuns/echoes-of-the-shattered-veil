@@ -1,0 +1,17 @@
+[gd_resource type="Resource" load_steps=2 format=3]
+
+[ext_resource path="res://scripts/core/resources/item_definition_resource.gd" type="Script" id="1"]
+
+[resource]
+script = ExtResource("1")
+content_id = &"base.item.quest.lysa_paper_bird"
+display_name_key = &"base.item.quest.lysa_paper_bird.name"
+description_key = &"base.item.quest.lysa_paper_bird.description"
+item_type = 4
+equip_slot = 0
+max_stack = 1
+power = 0
+affix_slots = 0
+effect_ids = PackedStringArray()
+texture_path = "res://assets/sprites/items/echo_shard.png"
+essence_value = 0

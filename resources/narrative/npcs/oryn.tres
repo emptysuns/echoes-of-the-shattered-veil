@@ -1,0 +1,16 @@
+[gd_resource type="Resource" load_steps=2 format=3]
+
+[ext_resource path="res://scripts/core/resources/npc_definition_resource.gd" type="Script" id="1"]
+
+[resource]
+script = ExtResource("1")
+content_id = &"base.npc.oryn"
+display_name_key = &"npc.oryn.name"
+description_key = &"npc.oryn.description"
+portrait_path = "res://assets/portraits/oryn.png"
+dialogue_ids = PackedStringArray("base.dialogue.hub.oryn")
+relationship_track_id = &"base.relationship.oryn"
+initial_relationship = 0
+survival_flag_id = &"base.flag.oryn_alive"
+autonomy_flag_id = &"base.flag.oryn_autonomy"
+gameplay_service = &"lore_codex"

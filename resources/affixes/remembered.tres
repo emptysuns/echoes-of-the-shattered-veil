@@ -1,0 +1,15 @@
+[gd_resource type="Resource" load_steps=2 format=3]
+
+[ext_resource path="res://scripts/core/resources/affix_definition_resource.gd" type="Script" id="1"]
+
+[resource]
+script = ExtResource("1")
+content_id = &"base.affix.remembered"
+display_name_key = &"base.affix.remembered.name"
+tier = 1
+budget_cost = 2
+allowed_item_tags = PackedStringArray("weapon", "armor")
+attack_bonus = 1
+defense_bonus = 1
+health_bonus = 2
+granted_effect_ids = PackedStringArray()

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" load_steps=2 format=3]
+
+[ext_resource path="res://scripts/core/resources/story_event_resource.gd" type="Script" id="1"]
+
+[resource]
+script = ExtResource("1")
+content_id = &"base.story.act1.bellmakers_cell"
+display_name_key = &"base.story.act1.bellmakers_cell.name"
+act = 1
+required = false
+room_tag = &"story_cell"
+minimum_floor = 2
+maximum_floor = 3
+cooldown_floors = 2
+fallback_room_id = &"base.room.story.ash_clinic"
