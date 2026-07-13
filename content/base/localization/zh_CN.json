@@ -148,6 +148,25 @@
     "dialogue.moth.choice_leave": "尊重它的沉默。",
     "dialogue.moth.trust": "不。这一个字是我的。",
     "base.vision.act1.hands_at_brass_console.name": "黄铜控制台前的手",
-    "base.vision.act1.name_inside_bell.name": "钟里的名字"
+    "base.vision.act1.name_inside_bell.name": "钟里的名字",
+    "base.effect.slash.name": "斩击",
+    "base.effect.reveal_lore.name": "揭示证词",
+    "base.effect.slow.name": "迟缓回响",
+    "base.effect.apply_memory_bleed.name": "施加记忆流血",
+    "base.effect.mend_small.name": "小型缝合",
+    "base.effect.bell_bolt.name": "钟鸣弹",
+    "base.story.act1.ash_clinic.name": "灰烬诊疗室",
+    "base.story.act1.bellmakers_cell.name": "铸钟囚室",
+    "base.story.act1.nave_missing_names.name": "失名者中殿",
+    "base.tile.stairs.name": "下行阶梯",
+    "base.tile.floor.name": "石地",
+    "base.tile.ash_trap.name": "灰齿陷阱",
+    "base.tile.wall.name": "前殿墙体",
+    "base.room.story.ash_clinic.name": "灰烬诊疗室模板",
+    "base.room.story.bellmakers_cell.name": "铸钟囚室模板",
+    "base.room.story.nave_missing_names.name": "失名者中殿模板",
+    "base.boss.caedmon.phase.name_under_bell.name": "钟下之名",
+    "base.boss.caedmon.phase.grief_returned.name": "悲痛归还",
+    "base.boss.caedmon.phase.protocol.name": "第七门协议"
   }
 }

@@ -148,6 +148,25 @@
     "dialogue.moth.choice_leave": "Respect the silence.",
     "dialogue.moth.trust": "No. That word is mine.",
     "base.vision.act1.hands_at_brass_console.name": "Hands at the Brass Console",
-    "base.vision.act1.name_inside_bell.name": "The Name Inside the Bell"
+    "base.vision.act1.name_inside_bell.name": "The Name Inside the Bell",
+    "base.effect.slash.name": "Slash",
+    "base.effect.reveal_lore.name": "Reveal Testimony",
+    "base.effect.slow.name": "Slowing Echo",
+    "base.effect.apply_memory_bleed.name": "Inflict Memory Bleed",
+    "base.effect.mend_small.name": "Minor Mend",
+    "base.effect.bell_bolt.name": "Bell Bolt",
+    "base.story.act1.ash_clinic.name": "Ash Clinic",
+    "base.story.act1.bellmakers_cell.name": "Bellmaker's Cell",
+    "base.story.act1.nave_missing_names.name": "Nave of Missing Names",
+    "base.tile.stairs.name": "Descending Stairs",
+    "base.tile.floor.name": "Stone Floor",
+    "base.tile.ash_trap.name": "Ash-Tooth Trap",
+    "base.tile.wall.name": "Narthex Wall",
+    "base.room.story.ash_clinic.name": "Ash Clinic Template",
+    "base.room.story.bellmakers_cell.name": "Bellmaker's Cell Template",
+    "base.room.story.nave_missing_names.name": "Nave of Missing Names Template",
+    "base.boss.caedmon.phase.name_under_bell.name": "The Name Under the Bell",
+    "base.boss.caedmon.phase.grief_returned.name": "Grief Returned",
+    "base.boss.caedmon.phase.protocol.name": "Protocol of the Seventh Gate"
   }
 }

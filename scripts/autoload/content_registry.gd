@@ -29,6 +29,9 @@ func load_all() -> bool:
         _load_locale(locale)
     _load_json_directory(BASE_CONTENT_PATH + "/dialogues", _dialogues, "dialogue_id")
     _validate_locale_parity()
+    _validate_dialogue_graphs()
+    _validate_definition_references()
+    _validate_definition_localization()
     is_loaded = _errors.is_empty()
     if is_loaded:
         content_loaded.emit(_definitions.size())
@@ -170,3 +173,66 @@ func _validate_locale_parity() -> void:
         if key not in en_keys: _errors.append("Missing English key: %s" % key)
     for key in en_keys:
         if key not in zh_keys: _errors.append("Missing Chinese key: %s" % key)
+
+
+func _validate_dialogue_graphs() -> void:
+    for dialogue_id: String in _dialogues:
+        var graph := _dialogues[dialogue_id] as Dictionary
+        var nodes := graph.get("nodes", {}) as Dictionary
+        var start := String(graph.get("start_node", ""))
+        if not nodes.has(start): _errors.append("Dialogue %s has unknown start node %s" % [dialogue_id, start])
+        for node_id: String in nodes:
+            var node := nodes[node_id] as Dictionary
+            var node_type := String(node.get("type", ""))
+            if node_type == "line":
+                _require_translation(String(node.get("text_key", "")), "Dialogue %s node %s" % [dialogue_id, node_id])
+                var next := String(node.get("next", ""))
+                if not nodes.has(next): _errors.append("Dialogue %s node %s points to unknown %s" % [dialogue_id, node_id, next])
+            elif node_type == "choice":
+                var choices: Array = node.get("choices", [])
+                if choices.is_empty(): _errors.append("Dialogue %s choice node %s is empty" % [dialogue_id, node_id])
+                for choice: Dictionary in choices:
+                    _require_translation(String(choice.get("text_key", "")), "Dialogue %s choice %s" % [dialogue_id, node_id])
+                    var next := String(choice.get("next", ""))
+                    if not nodes.has(next): _errors.append("Dialogue %s choice %s points to unknown %s" % [dialogue_id, node_id, next])
+            elif node_type != "end":
+                _errors.append("Dialogue %s node %s has unsupported type %s" % [dialogue_id, node_id, node_type])
+
+func _validate_definition_references() -> void:
+    for definition: ContentDefinition in _definitions.values():
+        if definition is ItemDefinitionResource:
+            for effect_id in (definition as ItemDefinitionResource).effect_ids: _require_definition(effect_id, definition.content_id)
+        elif definition is BiomeDefinitionResource:
+            var biome := definition as BiomeDefinitionResource
+            for target_id in biome.spawn_entity_ids: _require_definition(target_id, definition.content_id)
+            for target_id in biome.item_ids: _require_definition(target_id, definition.content_id)
+            for target_id in biome.story_event_ids: _require_definition(target_id, definition.content_id)
+        elif definition is StoryEventResource:
+            var story := definition as StoryEventResource
+            if not String(story.fallback_room_id).is_empty(): _require_definition(story.fallback_room_id, definition.content_id)
+        elif definition is EffectDefinitionResource:
+            var effect := definition as EffectDefinitionResource
+            if not String(effect.target_id).is_empty(): _require_definition(effect.target_id, definition.content_id)
+        elif definition is NPCDefinitionResource:
+            for dialogue_id in (definition as NPCDefinitionResource).dialogue_ids:
+                if not _dialogues.has(String(dialogue_id)): _errors.append("%s references missing dialogue %s" % [definition.content_id, dialogue_id])
+        elif definition is EndingResource:
+            for npc_id in (definition as EndingResource).required_survivors: _require_definition(npc_id, definition.content_id)
+
+func _validate_definition_localization() -> void:
+    for definition: ContentDefinition in _definitions.values():
+        _require_translation(String(definition.display_name_key), String(definition.content_id))
+        if not String(definition.description_key).is_empty(): _require_translation(String(definition.description_key), String(definition.content_id))
+        if definition is LoreEntryResource: _require_translation(String((definition as LoreEntryResource).body_key), String(definition.content_id))
+        elif definition is MemoryVisionResource:
+            for frame_key in (definition as MemoryVisionResource).frame_text_keys: _require_translation(frame_key, String(definition.content_id))
+
+func _require_definition(target_id: StringName, source_id: StringName) -> void:
+    if not _definitions.has(target_id): _errors.append("%s references missing definition %s" % [source_id, target_id])
+
+func _require_translation(key: String, source: String) -> void:
+    if key.is_empty():
+        _errors.append("%s has an empty localization key" % source)
+        return
+    for locale in SUPPORTED_LOCALES:
+        if not (_localizations.get(locale, {}) as Dictionary).has(key): _errors.append("%s missing %s translation %s" % [source, locale, key])

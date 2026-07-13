@@ -75,7 +75,7 @@ REQUIRED_DIRECTORIES = (
 
 PROJECT_FRAGMENTS = (
     'config/features=PackedStringArray("4.3", "GL Compatibility")',
-    'config/version="0.1.0-dev"',
+    'config/version="0.1.0"',
     "window/size/viewport_width=480",
     "window/size/viewport_height=270",
     "window/size/window_width_override=960",
@@ -194,8 +194,8 @@ class ProjectFoundationTests(unittest.TestCase):
             self.assertIn(fragment, project)
         for action in INPUT_ACTIONS:
             self.assertRegex(project, rf"(?m)^{re.escape(action)}=\{{$")
-        self.assertNotIn("run/main_scene", project)
-        self.assertNotIn("[autoload]", project)
+        self.assertIn('run/main_scene="res://scenes/bootstrap/main.tscn"', project)
+        self.assertIn("[autoload]", project)
 
     def test_architecture_document_is_complete(self) -> None:
         path = ROOT / "ARCHITECTURE.md"
