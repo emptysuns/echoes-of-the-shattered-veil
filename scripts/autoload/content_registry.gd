@@ -7,13 +7,13 @@ signal locale_changed(locale: String)
 
 const BASE_CONTENT_PATH := "res://content/base"
 const RESOURCE_PATH := "res://resources"
-const SUPPORTED_LOCALES := ["zh_CN", "en"]
+const SUPPORTED_LOCALES := ["en", "zh_CN"]
 
 var _definitions: Dictionary = {}
 var _dialogues: Dictionary = {}
 var _localizations: Dictionary = {}
 var _errors := PackedStringArray()
-var _current_locale := "zh_CN"
+var _current_locale := "en"
 var is_loaded := false
 
 func _ready() -> void:

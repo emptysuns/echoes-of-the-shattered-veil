@@ -2,6 +2,18 @@
 
 All notable changes follow semantic versioning.
 
+## 0.1.2 — Start Screen Input Fix
+
+### Fixed
+
+- Restored mouse and touch interaction by making full-viewport UI layout roots ignore pointer hit testing while preserving interactive child controls.
+- Added an integration regression test that performs a real mouse click on the Start button.
+
+### Changed
+
+- English is now the default locale; Simplified Chinese remains fully supported.
+- Expanded the README into complete English-first bilingual documentation.
+
 ## 0.1.1 — Act I: Ashen Narthex
 
 ### Fixed

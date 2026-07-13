@@ -168,9 +168,9 @@ class ProjectFoundationTests(unittest.TestCase):
         manifest = json.loads((ROOT / "content/base/manifest.json").read_text(encoding="utf-8"))
         self.assertEqual("base", manifest["pack_id"])
         self.assertEqual(1, manifest["schema_version"])
-        self.assertEqual("0.1.0", manifest["version"])
-        self.assertEqual("zh_CN", manifest["default_locale"])
-        self.assertEqual(["zh_CN", "en"], manifest["supported_locales"])
+        self.assertEqual((ROOT / "VERSION").read_text(encoding="utf-8").strip(), manifest["version"])
+        self.assertEqual("en", manifest["default_locale"])
+        self.assertEqual(["en", "zh_CN"], manifest["supported_locales"])
 
         catalogs = {}
         for locale in manifest["supported_locales"]:

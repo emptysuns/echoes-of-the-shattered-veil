@@ -76,7 +76,11 @@ func _build_theme() -> void:
     theme.set_stylebox("hover", "Button", hover); theme.set_stylebox("pressed", "Button", hover)
 
 func _full_control() -> Control:
-    var control := Control.new(); control.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT); control.theme = theme; return control
+    var control := Control.new()
+    control.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+    control.mouse_filter = Control.MOUSE_FILTER_IGNORE
+    control.theme = theme
+    return control
 
 func _build_hud() -> void:
     var root := _full_control(); add_child(root)

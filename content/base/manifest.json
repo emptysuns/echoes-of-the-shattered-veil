@@ -2,10 +2,13 @@
   "schema_version": 1,
   "pack_id": "base",
   "display_name_key": "pack.base.name",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "game_version": ">=0.1.0 <1.0.0",
-  "default_locale": "zh_CN",
-  "supported_locales": ["zh_CN", "en"],
+  "default_locale": "en",
+  "supported_locales": [
+    "en",
+    "zh_CN"
+  ],
   "dependencies": [],
   "overrides": []
 }
