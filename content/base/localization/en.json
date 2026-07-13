@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "locale": "en",
+  "entries": {
+    "game.title": "Echoes of the Shattered Veil",
+    "pack.base.name": "Base Content",
+    "act.1.name": "Ashen Narthex",
+    "act.2.name": "Gilded Ossuary",
+    "act.3.name": "Mirror Deep",
+    "act.4.name": "Wound Crown",
+    "ending.mend.name": "Mend",
+    "ending.sever.name": "Sever",
+    "ending.crown.name": "Crown",
+    "ending.chorus.name": "Chorus"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "locale": "zh_CN",
+  "entries": {
+    "game.title": "破碎帷幕的回响",
+    "pack.base.name": "基础内容",
+    "act.1.name": "灰烬前殿",
+    "act.2.name": "鎏金骨廷",
+    "act.3.name": "镜渊",
+    "act.4.name": "伤冠之巅",
+    "ending.mend.name": "缝合",
+    "ending.sever.name": "割断",
+    "ending.crown.name": "加冕",
+    "ending.chorus.name": "合唱"
+  }
+}
