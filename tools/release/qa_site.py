@@ -1,11 +1,14 @@
 #!/usr/bin/env python3
 """Browser QA for the static GitHub Pages surface."""
 import asyncio
+import os
 from pathlib import Path
 from playwright.async_api import async_playwright
 
 ROOT = Path(__file__).resolve().parents[2]
 URL = "http://127.0.0.1:4173"
+OUTPUT_DIR = Path(os.environ.get("QA_OUTPUT_DIR", "/tmp/eotsv-site-qa"))
+OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
 async def audit(page, label: str) -> None:
     errors: list[str] = []
@@ -28,7 +31,7 @@ async def audit(page, label: str) -> None:
     else:
         await page.locator("#world").scroll_into_view_if_needed()
     assert await page.locator("#world").is_visible()
-    await page.screenshot(path=str(ROOT / f"docs/design/site-{label}.png"), full_page=True)
+    await page.screenshot(path=str(OUTPUT_DIR / f"site-{label}.png"), full_page=True)
     assert not errors, errors
 
 async def main() -> None:
