@@ -31,6 +31,7 @@ InventorySystem="*res://scripts/autoload/inventory_system.gd"
 CombatSystem="*res://scripts/autoload/combat_system.gd"
 DialogueManager="*res://scripts/autoload/dialogue_manager.gd"
 DungeonGenerator="*res://scripts/autoload/dungeon_generator.gd"
+FOVSystem="*res://scripts/autoload/fov_system.gd"
 UIManager="*res://scripts/autoload/ui_manager.gd"
 GameManager="*res://scripts/autoload/game_manager.gd"
 
