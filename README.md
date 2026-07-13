@@ -6,7 +6,7 @@ A bilingual, data-driven, narrative roguelike built with Godot 4.3. Enter a livi
 
 ![The Shattered Spire](assets/lore_art/shattered_spire_panorama.png)
 
-## v0.1.0 Act I vertical slice
+## v0.1.1 Act I vertical slice
 
 - Procedural multi-floor Ashen Narthex with narrative-room injection
 - Permadeath loop returning to Echo Sanctum with persistent Echo Essence

@@ -75,7 +75,6 @@ REQUIRED_DIRECTORIES = (
 
 PROJECT_FRAGMENTS = (
     'config/features=PackedStringArray("4.3", "GL Compatibility")',
-    'config/version="0.1.0"',
     "window/size/viewport_width=480",
     "window/size/viewport_height=270",
     "window/size/window_width_override=960",

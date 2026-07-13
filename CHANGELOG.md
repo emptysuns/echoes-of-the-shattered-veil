@@ -2,7 +2,12 @@
 
 All notable changes follow semantic versioning.
 
-## 0.1.0 — Act I: Ashen Narthex
+## 0.1.1 — Act I: Ashen Narthex
+
+### Fixed
+
+- Removed incompatible Android SDK overrides from the built-in-template export preset.
+- Preserved clean cross-platform release packaging and tag/version validation.
 
 ### Added
 
