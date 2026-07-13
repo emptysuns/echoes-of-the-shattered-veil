@@ -1,0 +1,144 @@
+name: Release
+
+on:
+  push:
+    tags: ['v*.*.*']
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Existing semantic tag to release
+        required: true
+
+permissions:
+  contents: write
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
+env:
+  GODOT_URL: https://github.com/godotengine/godot/releases/download/4.3-stable/Godot_v4.3-stable_linux.x86_64.zip
+  TEMPLATES_URL: https://github.com/godotengine/godot/releases/download/4.3-stable/Godot_v4.3-stable_export_templates.tpz
+
+jobs:
+  gate:
+    runs-on: ubuntu-24.04
+    outputs:
+      version: ${{ steps.version.outputs.version }}
+      tag: ${{ steps.version.outputs.tag }}
+    steps:
+      - uses: actions/checkout@v4
+      - id: version
+        shell: bash
+        run: |
+          version="$(tr -d '[:space:]' < VERSION)"
+          tag="${{ github.event_name == 'workflow_dispatch' && inputs.tag || github.ref_name }}"
+          [[ "$version" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]
+          [[ "$tag" == "v$version" ]] || { echo "Tag $tag does not match VERSION $version" >&2; exit 1; }
+          grep -q "config/version=\"$version\"" project.godot
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+          echo "tag=$tag" >> "$GITHUB_OUTPUT"
+
+  desktop-web:
+    needs: gate
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate before export
+        run: python3 -m unittest discover -s tests -v
+      - id: export
+        uses: firebelley/godot-export@v6.0.0
+        with:
+          godot_executable_download_url: ${{ env.GODOT_URL }}
+          godot_export_templates_download_url: ${{ env.TEMPLATES_URL }}
+          relative_project_path: ./
+          archive_output: true
+          archive_root_folder: true
+          presets_to_export: Linux,Windows,macOS,Web
+          cache: true
+      - uses: actions/upload-artifact@v4
+        with:
+          name: desktop-web-exports
+          path: ${{ steps.export.outputs.archive_directory }}
+          if-no-files-found: error
+
+  android:
+    needs: gate
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: android-actions/setup-android@v3
+      - id: export
+        uses: firebelley/godot-export@v6.0.0
+        with:
+          godot_executable_download_url: ${{ env.GODOT_URL }}
+          godot_export_templates_download_url: ${{ env.TEMPLATES_URL }}
+          relative_project_path: ./
+          archive_output: true
+          archive_root_folder: true
+          export_debug: true
+          presets_to_export: Android
+          cache: true
+      - uses: actions/upload-artifact@v4
+        with:
+          name: android-export
+          path: ${{ steps.export.outputs.archive_directory }}
+          if-no-files-found: error
+
+  publish:
+    needs: [gate, desktop-web, android]
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          path: downloaded
+      - name: Normalize artifacts and checksums
+        env:
+          VERSION: ${{ needs.gate.outputs.version }}
+        run: |
+          set -euo pipefail
+          mkdir -p release-assets
+          shopt -s globstar nullglob
+          for file in downloaded/**/*.zip; do
+            lower="$(basename "$file" | tr '[:upper:]' '[:lower:]')"
+            case "$lower" in
+              *linux*) target="echoes-of-the-shattered-veil-v$VERSION-linux-x86_64.zip" ;;
+              *windows*) target="echoes-of-the-shattered-veil-v$VERSION-windows-x86_64.zip" ;;
+              *mac*) target="echoes-of-the-shattered-veil-v$VERSION-macos-universal.zip" ;;
+              *web*) target="echoes-of-the-shattered-veil-v$VERSION-web.zip" ;;
+              *android*) target="echoes-of-the-shattered-veil-v$VERSION-android-debug.zip" ;;
+              *) continue ;;
+            esac
+            cp "$file" "release-assets/$target"
+          done
+          android_zip="release-assets/echoes-of-the-shattered-veil-v$VERSION-android-debug.zip"
+          if [[ -f "$android_zip" ]]; then
+            mkdir -p android-unpacked
+            unzip -q "$android_zip" -d android-unpacked
+            apk="$(find android-unpacked -type f -name '*.apk' | head -1)"
+            [[ -n "$apk" ]] && cp "$apk" "release-assets/echoes-of-the-shattered-veil-v$VERSION-android.apk"
+          fi
+          [[ $(find release-assets -maxdepth 1 -type f | wc -l) -ge 5 ]]
+          (cd release-assets && sha256sum * > "echoes-of-the-shattered-veil-v$VERSION-SHA256SUMS.txt")
+      - name: Publish latest GitHub Release with gh
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ needs.gate.outputs.tag }}
+          VERSION: ${{ needs.gate.outputs.version }}
+        run: |
+          mapfile -d '' files < <(find release-assets -maxdepth 1 -type f -print0)
+          gh release create "$TAG" "${files[@]}" --verify-tag --latest --generate-notes --title "Echoes of the Shattered Veil v$VERSION"
+      - name: Read back release assets
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ needs.gate.outputs.tag }}
+        run: |
+          gh release view "$TAG" --json isLatest,assets,url --jq '{latest:.isLatest,url,assets:[.assets[].name]}'
+          test "$(gh release view "$TAG" --json isLatest --jq .isLatest)" = true
